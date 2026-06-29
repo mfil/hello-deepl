@@ -1,4 +1,4 @@
 all: a.out
 
-a.out:
-	clang++ mnist_reader.cc test.cc -lz
+a.out: mnist_reader.cc mnist_reader.h visualization.cc visualization.h test.cc
+	clang++ mnist_reader.cc visualization.cc test.cc -lz

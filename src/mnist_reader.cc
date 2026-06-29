@@ -1,3 +1,4 @@
+#include <algorithm>
 #include <arpa/inet.h>
 #include <stdexcept>
 #include <cstdint>
@@ -122,30 +123,11 @@ MnistReader::MnistReader(const std::string &images_path, const std::string &labe
     }
 }
 
-MnistImage MnistReader::getImage(size_t index) const {
-    auto data_start = m_image_data.begin() + index * m_image_size;
-    auto data_end = data_start + m_image_size;
-    return MnistImage(m_image_rows, m_image_columns, data_start, data_end);
-}
+vector<float> MnistReader::getImage(size_t index) const {
+    vector<float> result(m_image_size);
+    auto image_start = m_image_data.begin() + index * m_image_size;
+    auto image_end = image_start + m_image_size;
+    transform(image_start, image_end, result.begin(), [](uint8_t byte) { return byte / 255.0; });
 
-MnistImage::MnistImage(size_t rows, size_t columns, const vector<uint8_t>::const_iterator &data_start, const vector<uint8_t>::const_iterator &data_end) : m_rows(rows), m_columns(columns) {
-    m_data.assign(data_start, data_end);
-}
-
-void MnistImage::print() const {
-    for (size_t row = 0; row < m_rows; row++) {
-        for (size_t col = 0; col < m_columns; col++) {
-            uint8_t byte = m_data.at(col * m_rows + row);
-            if (byte > 225) {
-                printf("#");
-            } else if (byte > 180) {
-                printf("+");
-            } else if (byte > 80) {
-                printf(".");
-            } else {
-                printf(" ");
-            }
-        }
-        printf("\n");
-    }
+    return result;
 }
