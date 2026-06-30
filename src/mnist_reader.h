@@ -10,6 +10,7 @@ public:
     MnistReader(const std::string &images_path, const std::string &labels_path);
     vector<float> getImage(size_t index) const;
     uint8_t getLabel(size_t index) const { return m_label_data.at(index); };
+    size_t getImageCount() const { return m_images_count; };
 private:
     size_t m_images_count;
     size_t m_image_rows;

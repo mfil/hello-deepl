@@ -1,2 +1,3 @@
 emnist
 src/a.out
+src/*.o

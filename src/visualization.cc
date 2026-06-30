@@ -3,7 +3,7 @@
 
 using namespace std;
 
-void print_image_to_terminal(const vector<float> &image, size_t num_columns) {
+void printImageToTerminal(const vector<float> &image, size_t num_columns) {
     size_t num_rows = image.size() / num_columns;
     for (size_t row = 0; row < num_rows; row++) {
         for (size_t col = 0; col < num_columns; col++) {
