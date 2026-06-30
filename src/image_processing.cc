@@ -13,6 +13,15 @@ void addVectors(vector<float> &a, const vector<float> &b) {
     }
 }
 
+void subtractVectors(vector<float> &a, const vector<float> &b) {
+    if (a.size() != b.size()) {
+        throw runtime_error("vectors have different dimension");
+    }
+    for (size_t i = 0; i < a.size(); i++) {
+        a[i] -= b[i];
+    }
+}
+
 vector<float> average(const vector<vector<float>> &images) {
     if (images.size() == 0) {
         return vector<float>(0);
@@ -22,5 +31,16 @@ vector<float> average(const vector<vector<float>> &images) {
         addVectors(result, image);
     }
     for_each(result.begin(), result.end(), [&](float &x) { x /= images.size(); });
+    return result;
+}
+
+float inner_product(const vector<float> &a, const vector<float> &b) {
+    if (a.size() != b.size()) {
+        throw runtime_error("vectors have different dimension");
+    }
+    float result = 0;
+    for (size_t i = 0; i < a.size(); i++) {
+        result += a[i] * b[i];
+    }
     return result;
 }

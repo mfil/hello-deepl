@@ -91,11 +91,8 @@ MnistReader::MnistReader(const std::string &images_path, const std::string &labe
     }
     auto dimensions = parse_images_header(images_header);
     m_images_count = static_cast<size_t>(get<0>(dimensions));
-    printf("%lu\n", m_images_count);
     m_image_rows = static_cast<size_t>(get<1>(dimensions));
-    printf("%lu\n", m_image_rows);
     m_image_columns = static_cast<size_t>(get<2>(dimensions));
-    printf("%lu\n", m_image_columns);
 
     uint8_t labels_header[labels_header_size];
     if (labels_file.read(labels_header, sizeof(labels_header)) < sizeof(labels_header)) {
@@ -103,7 +100,6 @@ MnistReader::MnistReader(const std::string &images_path, const std::string &labe
     }
     uint32_t label_count = parse_labels_header(labels_header);
     if (label_count != m_images_count) {
-        printf("%u %lu\n", label_count, m_images_count);
         throw runtime_error("Inconsistent numbers of images and labels.");
     }
 
