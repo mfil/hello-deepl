@@ -22,6 +22,12 @@ void subtractVectors(vector<float> &a, const vector<float> &b) {
     }
 }
 
+void scaleVector(vector<float> &a, float factor) {
+    for (float &x : a) {
+        x *= factor;
+    }
+}
+
 vector<float> average(const vector<vector<float>> &images) {
     if (images.size() == 0) {
         return vector<float>(0);
@@ -34,7 +40,7 @@ vector<float> average(const vector<vector<float>> &images) {
     return result;
 }
 
-float inner_product(const vector<float> &a, const vector<float> &b) {
+float innerProduct(const vector<float> &a, const vector<float> &b) {
     if (a.size() != b.size()) {
         throw runtime_error("vectors have different dimension");
     }

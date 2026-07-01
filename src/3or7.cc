@@ -35,14 +35,14 @@ int main() {
 
     float avg_three_score = 0;
     for (auto three : threes) {
-        avg_three_score += inner_product(diff, three);
+        avg_three_score += innerProduct(diff, three);
     }
     avg_three_score /= threes.size();
     printf("avg. three: %f\n", avg_three_score);
 
     float avg_seven_score = 0;
     for (auto seven : sevens) {
-        avg_seven_score += inner_product(diff, seven);
+        avg_seven_score += innerProduct(diff, seven);
     }
     avg_seven_score /= sevens.size();
     printf("avg. seven: %f\n", avg_seven_score);
@@ -67,12 +67,12 @@ int main() {
 
     size_t successes = 0;
     for (auto &three : test_threes) {
-        if (inner_product(diff, three) < bias) {
+        if (innerProduct(diff, three) < bias) {
             successes += 1;
         }
     }
     for (auto &seven : test_sevens) {
-        if (inner_product(diff, seven) >= bias) {
+        if (innerProduct(diff, seven) >= bias) {
             successes += 1;
         }
     }

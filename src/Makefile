@@ -1,4 +1,4 @@
-all: 3or7
+all: 3or7 3or7learn
 
 mnist_reader.o: mnist_reader.cc mnist_reader.h
 	clang++ -r -o mnist_reader.o mnist_reader.cc
@@ -11,3 +11,6 @@ visualization.o: visualization.cc visualization.h
 
 3or7: mnist_reader.o image_processing.o visualization.o image_processing.o 3or7.cc
 	clang++ -o 3or7 mnist_reader.o visualization.cc image_processing.o 3or7.cc -lz
+
+3or7learn: mnist_reader.o image_processing.o visualization.o image_processing.o 3or7learn.cc
+	clang++ -o 3or7learn mnist_reader.o visualization.cc image_processing.o 3or7learn.cc -lz

@@ -11,10 +11,8 @@ void printImageToTerminal(const vector<float> &image, size_t num_columns) {
             if (pixel_brightness > 0.9) {
                 printf("#");
             } else if (pixel_brightness > 0.6) {
-                printf("X");
-            } else if (pixel_brightness > 0.3) {
                 printf("+");
-            } else if (pixel_brightness > 0.1) {
+            } else if (pixel_brightness > 0.3) {
                 printf(".");
             } else {
                 printf(" ");
