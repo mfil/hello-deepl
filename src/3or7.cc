@@ -30,6 +30,9 @@ int main() {
     auto diff = average_seven;
     subtractVectors(diff, average_three);
 
+    printf("Diff:\n");
+    printDiffToTerminal(diff, 28);
+
     float avg_three_score = 0;
     for (auto three : threes) {
         avg_three_score += inner_product(diff, three);
